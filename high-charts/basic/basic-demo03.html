@@ -1,0 +1,45 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo03</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    var options = {
+        chart: {
+            renderTo : 'container',
+            events: {
+                click: function (event) { // 点击图片任何一地方,将会出现这个地方的x,y 的值.
+                    var label = this.renderer.label(
+                        'x: ' + Highcharts.numberFormat(event.xAxis[0].value, 2) + ', y: ' + Highcharts.numberFormat(event.yAxis[0].value, 2),
+                        event.xAxis[0].axis.toPixels(event.xAxis[0].value),
+                        event.yAxis[0].axis.toPixels(event.yAxis[0].value)
+                    )
+                        .attr({
+                            fill: Highcharts.getOptions().colors[0],
+                            padding: 10,
+                            r: 5,
+                            zIndex: 8
+                        })
+                        .css({
+                            color: '#FFFFFF'
+                        })
+                        .add();
+                    setTimeout(function () {
+                        label.fadeOut(); // 1秒钟后褪色.
+                    }, 1000);
+                }
+            }
+        },
+        series: [{
+            data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+        }]
+    };
+    Highcharts.chart(options); // 用这种方式也可以渲染图表
+</script>
+</body>
+</html>

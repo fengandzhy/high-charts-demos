@@ -1,0 +1,40 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo01</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    // 图表配置
+    var options = {
+        chart: {
+            renderTo : 'container', // 这里指定到render 到哪里去.
+            type: 'column'
+        },
+        title: {
+            text: '我的第一个图表'
+        },
+        xAxis: {
+            categories: ['苹果', '香蕉', '橙子']
+        },
+        yAxis: {
+            title: {
+                text: '吃水果个数'
+            }
+        },
+        series: [{
+            name: '小明',
+            data: [1, 0, 4]
+        }, {
+            name: '小红',
+            data: [5, 7, 3]
+        }]
+    };
+    Highcharts.chart(options); // 用这种方式也可以渲染图表
+</script>
+</body>
+</html>
