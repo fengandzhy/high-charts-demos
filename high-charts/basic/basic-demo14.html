@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>basic demo13</title>
+    <title>basic demo14</title>
 </head>
 <body>
 <!-- 图表容器 DOM -->
@@ -10,12 +10,18 @@
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script>
     /**
-     * 如果没有x轴, 那么x轴就会从0开始,间隔是1
+     * 如果没有x轴, 也可以根据数据的起始点以及间隔来确定x轴的坐标
      * */
     var options = {
         chart: {
             type: 'line',
             renderTo : 'container'
+        },
+        plotOptions: {
+            series: {
+                pointStart: 1, // 数据的起始点
+                pointInterval:5 // 数据的间隔
+            }
         },
         series : [{
             data : [ 29,9, 71.5, 106.4,
