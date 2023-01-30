@@ -1,7 +1,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>basic demo17</title>
+    <title>basic demo18</title>
 </head>
 <body>
 <!-- 图表容器 DOM -->
@@ -21,15 +21,24 @@
                 dataLabels: {
                     enabled: true, // 数据标签 在节点上显示具体数据
                     formatter: function() {
-                        return this.x + "   " + this.y;
+                        return this.y;
                     }
                 }
             }
         },
 
-        series : [{
-            data : [ 29,9, 71.5, 106.4,
-               200, 194.1 , 20 ]
+        series: [{
+            data: [-10, -5, 0, 5, 10, 15, 10, 10, 5, 0, -5],
+            zones: [{
+                value: 0, // 上限为0时显示这个颜色,
+                color: '#f7a35c',
+                dashStyle: 'dot'
+            }, {
+                value: 10, // 上限为10时显示这个颜色
+                color: '#7cb5ec'
+            }, {
+                color: '#90ed7d' // 其余的现实这个颜色
+            }]
         }]
     };
     let chart = Highcharts.chart(options);
