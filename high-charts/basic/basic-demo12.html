@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo11</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    var options = {
+        chart: {
+            type: 'column',
+            renderTo : 'container'
+        },
+        plotOptions: {
+            column:{ // 这里的column 必须和上面的图像样式(column)一样, 如果上面现实的是图像是line的，这里也必须是line
+                events :{
+                    click:function(){
+                        alert('x='+event.point.x + ", y=" + event.point.y + ", extra=" + event.point.extra);
+                    }
+                }
+            }
+        },
+        tooltip:{
+            formatter:function(){
+                return '<b>' + this.series.name + '</b><br> y=' + this.y + ', <br>extra='+this.point.extra;
+            }
+        },
+        series: [{
+            dataLabels: {
+                enabled: true,
+                formatter: function() {
+                    console.log(this)
+                    return this.y + ' ' + this.point.suffix;
+                }
+            },
+            data: [
+                {y:29.7,extra:'hhh', suffix: '%'}, // 提示：extra 为随意命名的变量
+                {y:71.5,extra:'2333', suffix: 'g'},
+                {y:106.4,extra:'1122', suffix: 'm'},
+                {y:129.2,extra:'vvvv', suffix: '$'}
+            ]
+        }]
+    };
+    let chart = Highcharts.chart(options);
+
+</script>
+</body>
+</html>
