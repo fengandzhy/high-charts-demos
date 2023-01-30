@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo11</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    var options = {
+        chart: {
+            type: 'column',
+            renderTo : 'container'
+        },
+        xAxis: {
+            categories: ['Green', 'Pink']
+        },
+        series: [{
+            data: [{
+                name: 'Point 1',
+                color: '#00FF00',
+                y: 1
+            }, {
+                name: 'Point 2',
+                color: '#FF00FF',
+                y: 5
+            }]
+        }]
+    };
+    let chart = Highcharts.chart(options);
+
+</script>
+</body>
+</html>

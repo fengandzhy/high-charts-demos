@@ -1,0 +1,66 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo08</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+    var options = {
+        chart: {
+            type: 'spline',
+            renderTo : 'container',
+            inverted: true // x 轴 y轴对调
+        },
+        title: {
+            text: '大气温度和海拔高度关系'
+        },
+        subtitle: {
+            text: '根据标准大气模型绘制'
+        },
+        xAxis: {
+            reversed: false,
+            title: {
+                enabled: true,
+                text: '海拔高度'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + 'km'; // 这是x轴刻度
+                }
+            },
+            maxPadding: 0.05,
+            showLastLabel: true
+        },
+        yAxis: {
+            title: {
+                text: '温度'
+            },
+            labels: {
+                formatter: function () {
+                    return this.value + '°'; // 这是y轴刻度
+                }
+            },
+            lineWidth: 4
+        },
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            headerFormat: '<b>{series.name}</b><br/>',
+            pointFormat: '{point.x} km: {point.y}°C'
+        },
+        series: [{
+            name: '温度', // 左边默认x轴, 右边默认是y轴
+            data: [[0, 15], [10, -50], [20, -56.5], [30, -46.5], [40, -22.1],
+                [50, -2.5], [60, -27.7], [70, -55.7], [80, -76.5]]
+        }]
+    };
+    let chart = Highcharts.chart(options);
+
+</script>
+</body>
+</html>
