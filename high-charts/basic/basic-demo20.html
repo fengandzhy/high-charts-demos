@@ -1,0 +1,49 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>basic demo20</title>
+</head>
+<body>
+<!-- 图表容器 DOM -->
+<div id="container" style="width: 600px;height:400px;"></div>
+<!-- 引入 highcharts.js -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script>
+
+    var options = {
+        chart: {
+            type: 'pie',
+            renderTo : 'container'
+        },
+        plotOptions: {
+            pie: {
+                dataLabels: {
+                    enabled: true, // 数据标签 在节点上显示具体数据
+                    formatter: function() {
+                        // console.log(this);
+                        return this.key; // 饼图必须是一个key value 值的形式.
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '浏览器访问量占比',
+            data: [
+                ['Firefox', 45.0],
+                ['IE', 26.8], {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,  // 突出显示某个扇区，表示强调
+                },
+                ['Safari', 8.5],
+                ['Opera', 6.2],
+                ['其他', 0.7]
+            ]
+        }]
+    };
+    let chart = Highcharts.chart(options);
+
+</script>
+</body>
+</html>
